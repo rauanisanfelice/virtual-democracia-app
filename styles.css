@@ -13,6 +13,12 @@
     margin-right: 10%;
 }
 
+#btn-teste{
+    position: absolute;
+    margin: 0px auto;
+    float: center;
+}
+
 #btn_voltar{
     right: 30px;
     bottom: 20px;
@@ -33,4 +39,10 @@
 
 .col-sm-12{
     margin: 10px 10px;
+    width: 90%;
+}
+
+#percentual{
+    text-align: right;
+    font-size:  11;
 }
