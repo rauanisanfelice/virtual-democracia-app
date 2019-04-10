@@ -1,5 +1,5 @@
 #texto-inicio{
-    margin: 60px 20px 10px 20px !important;
+    margin: 65px 20px 10px 20px !important;
     text-align: center;
 }
 
@@ -14,8 +14,23 @@
 }
 
 #btn_voltar{
-    right: 0px;
+    right: 30px;
     bottom: 20px;
     position: sticky;
     float: right;
+}
+
+.card-img-top{
+    margin: 10px auto 0px;
+    border-radius: 0px 0px 50px 50px;
+    width: 100px;
+    height: 100px;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.col-sm-12{
+    margin: 10px 10px;
 }
