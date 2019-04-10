@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+    
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("myBtn").style.display = "block";
+        } else {
+            document.getElementById("myBtn").style.display = "none";
+        }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+    </script>
+
+    <head>
+        <title>Virtual Democracia</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="styles.css" />
+        <link rel="icon" type="imagem/png" href="favicon.png" />
+    </head>
+    
+    <body>
+        <div id="menu-superior">
+            <button type="button" class="btn btn-outline-dark" onclick="location.href='index.html';">Voltar</button>
+        </div>
+        <div
+        <div class="card" style="width: 18rem;">
+            <img src="candidatos/cand_ciro_gomes.jpg" class="card-img-top" alt="Ciro Gomes" style="width:100px;height:100px;">
+            <div class="card-body">
+                <h5 class="card-title">Ciro Gomes</h5>
+                <p class="card-text">Seus ideais batem com o candidato Ciro Gomes</p>
+            </div>
+        </div>
+
+        <div class="card" style="width: 18rem;">
+            <img src="candidatos/cand_alvaro_dias.jpg" class="card-img-top" alt="Alvoro Dias" style="width:100px;height:100px;">
+            <div class="card-body">
+                <h5 class="card-title">Alvoro Dias</h5>
+                <p class="card-text">Seus ideais batem com o candidato Alvoro Dias</p>
+            </div>
+        </div>
+
+        <!-- BTN VOLTA -->
+        <div id="btn_voltar">
+            <a onclick="topFunction()">
+                <img type="imagem" src="icon_seta_cima.ico" width="40" height="40">
+            </a>
+        </div>
+
+    </body>
+
+</html>
+
