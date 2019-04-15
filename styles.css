@@ -46,3 +46,12 @@
     text-align: right;
     font-size:  11;
 }
+
+body{
+    background-color: #f8f9fa;
+}
+
+.form-group{
+    background-color: #dee2e6 !important;
+}
+
