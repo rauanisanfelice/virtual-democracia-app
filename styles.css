@@ -14,9 +14,8 @@
 }
 
 #btn-teste{
-    position: absolute;
-    margin: 0px auto;
-    float: center;
+  margin: 0px auto;
+  display: block;
 }
 
 #btn_voltar{
@@ -54,4 +53,3 @@ body{
 .form-group{
     background-color: #dee2e6 !important;
 }
-
