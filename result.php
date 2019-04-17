@@ -25,7 +25,7 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="styles.css" />
-        <link rel="icon" type="imagem/png" href="favicon.png" />
+        <link rel="icon" type="imagem/png" href="imgs/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
 
@@ -46,9 +46,9 @@
         $q8 = $_POST['q8'];
         $q9 = $_POST['q9'];
         $q10 = $_POST['q10'];
-        $q11 = $_POST['q11'];
+        //$q11 = $_POST['q11'];
 
-        $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, $q11, 0)";
+        $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, 0)";
 
         mysqli_query($con, $query);
 
@@ -66,7 +66,7 @@
 
                 <!-- Alvoro Dias -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_alvaro_dias.jpg" class="card-img-top" alt="Alvoro Dias">
+                    <img src="imgs/cand_alvaro_dias.jpg" class="card-img-top" alt="Alvoro Dias">
                     <div class="card-body">
                         <h5 class="card-title">Alvoro Dias</h5>
                         <p class="card-text">Seus ideais batem com o candidato Alvoro Dias.</p>
@@ -76,7 +76,7 @@
 
                 <!-- Cabo Daciolo -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_cabo_daciolo.jpg" class="card-img-top" alt="Cabo Daciolo">
+                    <img src="imgs/cand_cabo_daciolo.jpg" class="card-img-top" alt="Cabo Daciolo">
                     <div class="card-body">
                         <h5 class="card-title">Cabo Daciolo</h5>
                         <p class="card-text">Seus ideais batem com o candidato Cabo Daciolo.</p>
@@ -86,7 +86,7 @@
 
                 <!-- Ciro Gomes -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_ciro_gomes.jpg" class="card-img-top" alt="Ciro Gomes">
+                    <img src="imgs/cand_ciro_gomes.jpg" class="card-img-top" alt="Ciro Gomes">
                     <div class="card-body">
                         <h5 class="card-title">Ciro Gomes</h5>
                         <p class="card-text">Seus ideais batem com o candidato Ciro Gomes.</p>
@@ -100,7 +100,7 @@
 
                 <!-- Fernando Haddad -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_fernando_haddad.jpg" class="card-img-top" alt="Fernando Haddad">
+                    <img src="imgs/cand_fernando_haddad.jpg" class="card-img-top" alt="Fernando Haddad">
                     <div class="card-body">
                         <h5 class="card-title">Fernando Haddad</h5>
                         <p class="card-text">Seus ideais batem com o candidato Fernando Haddad.</p>
@@ -110,7 +110,7 @@
 
                 <!-- Geraldo Alckmin -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_geraldo_alckmin.jpg" class="card-img-top" alt="Geraldo Alckmin">
+                    <img src="imgs/cand_geraldo_alckmin.jpg" class="card-img-top" alt="Geraldo Alckmin">
                     <div class="card-body">
                         <h5 class="card-title">Geraldo Alckmin</h5>
                         <p class="card-text">Seus ideais batem com o candidato Geraldo Alckmin.</p>
@@ -120,7 +120,7 @@
 
                 <!-- Guilherme Boulos -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_guilherme_boulos.jpg" class="card-img-top" alt="Guilherme Boulos">
+                    <img src="imgs/cand_guilherme_boulos.jpg" class="card-img-top" alt="Guilherme Boulos">
                     <div class="card-body">
                         <h5 class="card-title">Guilherme Boulos</h5>
                         <p class="card-text">Seus ideais batem com o candidato Guilherme Boulos.</p>
@@ -134,7 +134,7 @@
 
                 <!-- Henrique Meirelles -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_henrique_meirelles.jpg" class="card-img-top" alt="Henrique Meirelles">
+                    <img src="imgs/cand_henrique_meirelles.jpg" class="card-img-top" alt="Henrique Meirelles">
                     <div class="card-body">
                         <h5 class="card-title">Henrique Meirelles</h5>
                         <p class="card-text">Seus ideais batem com o candidato Henrique Meirelles.</p>
@@ -144,7 +144,7 @@
 
                 <!-- Jair Bolsonaro -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_jair_bolsonaro.jpg" class="card-img-top" alt="Jair Bolsonaro">
+                    <img src="imgs/cand_jair_bolsonaro.jpg" class="card-img-top" alt="Jair Bolsonaro">
                     <div class="card-body">
                         <h5 class="card-title">Jair Bolsonaro</h5>
                         <p class="card-text">Seus ideais batem com o candidato Jair Bolsonaro.</p>
@@ -154,7 +154,7 @@
 
                 <!-- Joao Almoedo -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_joao_almoedo.jpg" class="card-img-top" alt="Joao Almoedo">
+                    <img src="imgs/cand_joao_almoedo.jpg" class="card-img-top" alt="Joao Almoedo">
                     <div class="card-body">
                         <h5 class="card-title">Joao Almoedo</h5>
                         <p class="card-text">Seus ideais batem com o candidato Joao Almoedo.</p>
@@ -169,7 +169,7 @@
 
                 <!-- Marina Silva -->
                 <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="candidatos/cand_marina_silva.jpg" class="card-img-top" alt="Marina Silva">
+                    <img src="imgs/cand_marina_silva.jpg" class="card-img-top" alt="Marina Silva">
                     <div class="card-body">
                         <h5 class="card-title">Marina Silva</h5>
                         <p class="card-text">Seus ideais batem com o candidato Marina Silva.</p>
@@ -185,7 +185,7 @@
         <!-- BTN VOLTA -->
         <div id="btn_voltar">
             <a onclick="topFunction()">
-                <img type="imagem" src="icon_seta_cima.ico" style="width: 40px; height: 40px;">
+                <img type="imagem" src="imgs/seta_cima.png" style="width: 40px; height: 40px;">
             </a>
         </div>
 

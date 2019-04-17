@@ -7,13 +7,15 @@ library(caret)
 #install.packages('kernlab')
 library(kernlab)
 #install.packages('RMySQL') # CONECTAR AO PHP MYSQL
-require(RMySQL)
+#require(RMySQL)
+library(RMySQL)
 
 # CRIA CONEXAO AO BANCO
 con <- dbConnect(RMySQL::MySQL(), host = "localhost",dbname="virtual_democracia",user = "root", password = "")
 base <- dbReadTable(con, "questionario") #utilisateurs is a table from my database called extraction
 
 #encode (todos os atributos categóricos)
+base$id <- NULL
 base$qts_02 <- NULL
 base$qts_03 <- NULL
 base$qts_05 <- NULL
@@ -30,15 +32,19 @@ base_processed$qts_11 = factor(base_processed$qts_11, levels = c(1,2,3,4,5,6,7,8
 
 set.seed(32)
 
-classidx <- ncol(base_processed)
-folds <- createFolds(base_processed[,classidx],10,FALSE)
+# remove a questao sem presidente
+base_processed_sem <- subset(base_processed, !is.na(base_processed$qts_11))
 
-base_treino <-(base_processed[folds!=3,])
-base_teste <-(base_processed[folds==3,])
+classidx <- ncol(base_processed_sem)
+folds <- createFolds(base_processed_sem[,classidx],10,FALSE)
 
-#classificador Random Forest
+base_treino <-(base_processed_sem[folds!=3,])
+base_teste <-(base_processed_sem[folds==3,])
+base_teste <-rbind(base_teste,(subset(base_processed, is.na(base_processed$qts_11))))
+
+#classificador KSVM
 classif_ksvm = ksvm(qts_11 ~ ., data = base_treino, kernel = "rbfdot", cost = 0)
-prev_ksvm = predict(classif_ksvm, newdata = base_teste[-11])
+prev_ksvm = predict(classif_ksvm, newdata = base_teste[-8])
 
 matriz_confusao = table(base_teste$qts_11, prev_ksvm)
 result_cm = confusionMatrix(matriz_confusao)
@@ -46,7 +52,10 @@ result_cm = confusionMatrix(matriz_confusao)
 resumo_cm = result_cm$overall
 acuracia_cm = round(resumo_cm['Accuracy'] * 100, digits = 2)
 
-print(matriz_confusao)
+# fecha conexao
+dbDisconnect(con)
+
+print(result_cm)
 
 ##########################################################################################
 # BEST
