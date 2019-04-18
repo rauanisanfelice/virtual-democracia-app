@@ -42,15 +42,20 @@ set.seed(32)
 #base_teste <-(base_processed_sem[folds==3,])
 #base_teste <-rbind(base_teste,(subset(base_processed, is.na(base_processed$qts_11))))
 
+
+## http://www.learnbymarketing.com/tutorials/naive-bayes-in-r/
+## https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4930525/
 base_treino <-subset(base_processed, !is.na(base_processed$qts_11))
 base_teste <-subset(base_processed, is.na(base_processed$qts_11))
 
-#classificador KSVM
-classif_ksvm = ksvm(qts_11 ~ ., data = base_treino, kernel = "rbfdot", cost = 0)
-prev_ksvm = predict(classif_ksvm, newdata = base_teste[-8])
+#classificador Naive Bayes
+classif_bayesiano <- naiveBayes(qts_11 ~., data = base_treino)
 
-matriz_confusao = table(base_teste$qts_11, prev_ksvm)
-result_cm = confusionMatrix(matriz_confusao)
+prev_bayesiano <- predict(classif_bayesiano, base_treino, type="raw")
+
+matriz_confusao <- table(prev_bayesiano, base_treino$qts_11)
+
+result_cm <- confusionMatrix(matriz_confusao)
 
 resumo_cm = result_cm$overall
 acuracia_cm = round(resumo_cm['Accuracy'] * 100, digits = 2)
