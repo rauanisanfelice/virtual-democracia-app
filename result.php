@@ -46,13 +46,12 @@
         $q8 = $_POST['q8'];
         $q9 = $_POST['q9'];
         $q10 = $_POST['q10'];
-        //$q11 = $_POST['q11'];
 
-        $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, 0)";
+        $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, null)";
 
         mysqli_query($con, $query);
-
-        echo $query;
+        
+        exec("R/script.R");
 
       ?>
         <div id="menu-superior">
