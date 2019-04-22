@@ -15,6 +15,7 @@ con <- dbConnect(RMySQL::MySQL(), host = "localhost",dbname="virtual_democracia"
 base <- dbReadTable(con, "questionario") #utilisateurs is a table from my database called extraction
 
 #encode (todos os atributos categóricos)
+base$id <- NULL
 base$qts_02 <- NULL
 base$qts_03 <- NULL
 base$qts_05 <- NULL
@@ -31,11 +32,14 @@ base_processed$qts_11 = factor(base_processed$qts_11, levels = c(1,2,3,4,5,6,7,8
 
 set.seed(32)
 
-classidx <- ncol(base_processed)
-folds <- createFolds(base_processed[,classidx],10,FALSE)
+base_processed_sem <- subset(base_processed, !is.na(base_processed$qts_11))
+base_processed_com <- subset(base_processed, is.na(base_processed$qts_11))
 
-base_treino <-(base_processed[folds!=3,])
-base_teste <-(base_processed[folds==3,])
+classidx <- ncol(base_processed_sem)
+folds <- createFolds(base_processed_sem[,classidx],10,FALSE)
+
+base_treino <-(base_processed_sem[folds!=3,])
+base_teste <-(base_processed_sem[folds==3,])
 
 #classificador Random Forest
 classif_ksvm = ksvm(qts_11 ~ ., data = base_treino, kernel = "rbfdot", cost = 0)
@@ -47,7 +51,11 @@ result_cm = confusionMatrix(matriz_confusao)
 resumo_cm = result_cm$overall
 acuracia_cm = round(resumo_cm['Accuracy'] * 100, digits = 2)
 
-print(result_cm)
+# PREVE O MELHOR CANDIDATO
+prev_ksvm_result = predict(classif_ksvm, newdata = base_processed_com[-11])
+
+print(acuracia_cm)
+print(prev_ksvm_result)
 
 ##########################################################################################
 # BEST
