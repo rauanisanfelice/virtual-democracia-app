@@ -19,9 +19,9 @@ ksvm_cod <- function(){
   
   #encode (todos os atributos categóricos)
   base$id <- NULL
-  #base$qts_02 <- NULL
-  #base$qts_03 <- NULL
-  #base$qts_05 <- NULL
+  base$qts_02 <- NULL
+  base$qts_03 <- NULL
+  base$qts_05 <- NULL
   
   base_processed = base
   base_processed$qts_01 = factor(base_processed$qts_01, levels = c(1,2,3,4))
