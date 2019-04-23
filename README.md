@@ -9,3 +9,8 @@ Table: questionario
 
 Executar o arquivo: INSERT_BANCO.txt
 ```
+
+
+
+
+

@@ -50,10 +50,53 @@
         $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, null)";
 
         mysqli_query($con, $query);
-        
-        exec("R/script.R");
 
-      ?>
+        exec('C:\Windows\System32\cmd.exe /c C:\Users\Rauan\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
+        //echo '<pre>', join("\r\n", $output), "</pre>\r\n";
+
+        $content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
+        
+        //var_dump($content);
+
+        $acuraciaPos = strpos($content, 'Accuracy');
+        $presidentePos = strpos($content, '$presidente');
+
+        $acuracia = substr($content, $acuraciaPos + 8, 12);
+        $presidente = substr($content, $presidentePos + 17, 2);
+
+        #echo 'acuracia = ' . $acuracia;
+        #echo '<br/>presidente = ' . $presidente;
+
+        $presidentes = array(
+            1 => array('img' => 'imgs/', 'nome' => 'Brancos / Nulos / Não votou'),
+            2 => array('img' => 'imgs/cand_joao_almoedo.jpg', 'nome' => 'João Almoêdo - NOVO'),
+            3 => array('img' => 'imgs/cand_jair_bolsonaro.jpg', 'nome' => 'Jair Bolsonaro - PSL'),
+            4 => array('img' => 'imgs/cand_ciro_gomes.jpg', 'nome' => 'Ciro Gomes - PDT'),
+            5 => array('img' => 'imgs/cand_fernando_haddad.jpg', 'nome' => 'Fernando Haddad - PT'),
+            6 => array('img' => 'imgs/cand_geraldo_alckmin.jpg', 'nome' => 'Geraldo ALckmin - PSDB'),
+            7 => array('img' => 'imgs/cand_marina_silva.jpg', 'nome' => 'Marina Silva - REDE'),
+            8 => array('img' => 'imgs/', 'nome' => 'Outros Candidatos'),
+            9 => array('img' => 'imgs/cand_cabo_daciolo.jpg', 'nome' => 'Cabo Daciolo - PATRI'),
+            10 => array('img' => 'imgs/cand_alvaro_dias.jpg', 'nome' => 'Alvaro Dias - PODE'),
+            11 => array('img' => 'imgs/cand_guilherme_boulos.jpg', 'nome' => 'Guilherme Boulos - PSOL')
+        );
+
+        $presidente = trim($presidente);
+
+        //print_r($presidentes[$presidente]);
+        //$result =  shell_exec("Rscript C:/Users/Rauan/Documents/Github_Rauan/virtualdemocracia_app/R/script.R");
+        //echo $result;
+
+        $presidenteEscolhido = '<div class="card col-sm-12 col-md-4 border border-secondary">
+            <img src="'.$presidentes[$presidente]['img'].'" class="card-img-top" alt="'.$presidentes[$presidente]['img'].'">
+            <div class="card-body">
+                <h5 class="card-title">'.$presidentes[$presidente]['nome'].'</h5>
+                <p class="card-text">Seus ideais batem com o(a) candidato(a) '.$presidentes[$presidente]['nome'].'.</p>
+                <p class="card-text font-weight-bold" id="percentual">'.$acuracia.'% de compatibilidade</p>
+            </div>
+        </div>'
+
+        ?>
         <div id="menu-superior">
             <button type="button" class="btn btn-outline-dark" onclick="location.href='index.html';">Voltar</button>
         </div>
@@ -63,121 +106,15 @@
             <!-- LINHA 1 -->
             <div class="row" style="margin-top:65px;">
 
-                <!-- Alvoro Dias -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_alvaro_dias.jpg" class="card-img-top" alt="Alvoro Dias">
-                    <div class="card-body">
-                        <h5 class="card-title">Alvoro Dias</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Alvoro Dias.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-
-                <!-- Cabo Daciolo -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_cabo_daciolo.jpg" class="card-img-top" alt="Cabo Daciolo">
-                    <div class="card-body">
-                        <h5 class="card-title">Cabo Daciolo</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Cabo Daciolo.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-
-                <!-- Ciro Gomes -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_ciro_gomes.jpg" class="card-img-top" alt="Ciro Gomes">
-                    <div class="card-body">
-                        <h5 class="card-title">Ciro Gomes</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Ciro Gomes.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
+               <?= $presidenteEscolhido; ?>
+               <div class="col-sm-12 col-md-4 border border-secondary">
+                    <p>Você votou neste candidato?</p>
+                    <a href="teste-final.php?v=s&p=<?= $presidente ?>">Sim</a>
+                    <a href="teste-final.php?v=n">Não</a>
                 </div>
             </div>
 
-            <!-- LINHA 2 -->
-            <div class="row"  style="margin-top:10px;">
-
-                <!-- Fernando Haddad -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_fernando_haddad.jpg" class="card-img-top" alt="Fernando Haddad">
-                    <div class="card-body">
-                        <h5 class="card-title">Fernando Haddad</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Fernando Haddad.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-
-                <!-- Geraldo Alckmin -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_geraldo_alckmin.jpg" class="card-img-top" alt="Geraldo Alckmin">
-                    <div class="card-body">
-                        <h5 class="card-title">Geraldo Alckmin</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Geraldo Alckmin.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-
-                <!-- Guilherme Boulos -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_guilherme_boulos.jpg" class="card-img-top" alt="Guilherme Boulos">
-                    <div class="card-body">
-                        <h5 class="card-title">Guilherme Boulos</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Guilherme Boulos.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- LINHA 3 -->
-            <div class="row"  style="margin-top:10px;">
-
-                <!-- Henrique Meirelles -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_henrique_meirelles.jpg" class="card-img-top" alt="Henrique Meirelles">
-                    <div class="card-body">
-                        <h5 class="card-title">Henrique Meirelles</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Henrique Meirelles.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-
-                <!-- Jair Bolsonaro -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_jair_bolsonaro.jpg" class="card-img-top" alt="Jair Bolsonaro">
-                    <div class="card-body">
-                        <h5 class="card-title">Jair Bolsonaro</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Jair Bolsonaro.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-
-                <!-- Joao Almoedo -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_joao_almoedo.jpg" class="card-img-top" alt="Joao Almoedo">
-                    <div class="card-body">
-                        <h5 class="card-title">Joao Almoedo</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Joao Almoedo.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- LINHA 4 -->
-            <div class="row"  style="margin-top:10px;">
-
-                <!-- Marina Silva -->
-                <div class="card col-sm-12 col-md border border-secondary">
-                    <img src="imgs/cand_marina_silva.jpg" class="card-img-top" alt="Marina Silva">
-                    <div class="card-body">
-                        <h5 class="card-title">Marina Silva</h5>
-                        <p class="card-text">Seus ideais batem com o candidato Marina Silva.</p>
-                        <p class="card-text font-weight-bold" id="percentual">68% de compatibilidade</p>
-                    </div>
-                </div>
-                <div class="col-md"></div>
-                <div class="col-md"></div>
-            </div>
+           
 
         </div>
 

@@ -1,0 +1,8 @@
+$acuracia
+Accuracy 
+   68.97 
+
+$presidente
+[1] 4
+Levels: 1 2 3 4 5 6 7 8 9 10 11
+
