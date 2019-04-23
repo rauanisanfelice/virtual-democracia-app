@@ -48,15 +48,12 @@
         $q10 = $_POST['q10'];
 
         $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, null)";
-
         mysqli_query($con, $query);
 
         exec('C:\Windows\System32\cmd.exe /c C:\Users\Rauan\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
         //echo '<pre>', join("\r\n", $output), "</pre>\r\n";
 
         $content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
-        
-        //var_dump($content);
 
         $acuraciaPos = strpos($content, 'Accuracy');
         $presidentePos = strpos($content, '$presidente');
@@ -102,29 +99,14 @@
         </div>
 
         <div class="container">
-
-            <!-- LINHA 1 -->
             <div class="row" style="margin-top:65px;">
-
                <?= $presidenteEscolhido; ?>
-               <div class="col-sm-12 col-md-4 border border-secondary">
-                    <p>Você votou neste candidato?</p>
-                    <a href="teste-final.php?v=s&p=<?= $presidente ?>">Sim</a>
-                    <a href="teste-final.php?v=n">Não</a>
+               <div class="card col-sm-12 col-md-6 border border-secondary">
+                    <br><h5 class="txt-resp">Você votou neste candidato?</h5><br>
+                    <a class="btn btn-success btn-resp" href="teste-final.php?v=s&p=<?= $presidente ?>">Sim</a> <br>
+                    <a class="btn btn-danger btn-resp" href="teste-final.php?v=n">Não</a>
                 </div>
             </div>
-
-           
-
         </div>
-
-        <!-- BTN VOLTA -->
-        <div id="btn_voltar">
-            <a onclick="topFunction()">
-                <img type="imagem" src="imgs/seta_cima.png" style="width: 40px; height: 40px;">
-            </a>
-        </div>
-
     </body>
-
 </html>

@@ -53,3 +53,12 @@ body{
 .form-group{
     background-color: #dee2e6 !important;
 }
+
+.txt-resp{
+    margin-left: 10%;
+}
+
+.btn-resp{
+    width: 80%;
+    margin: 0 auto;
+}
