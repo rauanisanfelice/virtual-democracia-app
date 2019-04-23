@@ -1,13 +1,13 @@
 # Virtual Democracia App
 
-Instalado o Xamp
-
+Instalar XAMPP ou WAMP;
 
 ```shell
-Database: virtual_democracia
-Table: questionario
+Criar Database e table com as nomenclaturas abaixo:
+Database:   *virtual_democracia*
+Table:      *questionario*
 
-Executar o arquivo: INSERT_BANCO.txt
+Executar o arquivo (INSERT_BANCO.txt) para inclusão da base coletada.
 ```
 
 

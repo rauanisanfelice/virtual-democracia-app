@@ -8,13 +8,18 @@
     $votou = $_GET['v'];
     if($votou == 's'){
         $presidente = $_GET['p'];
+        if ($presidente == '') {$presidente = $_POST['p'];}
         $query = "UPDATE `questionario` SET `qts_11` = $presidente where `qts_11` IS NULL";
     }
     else {
         $query = "DELETE FROM `questionario` where `qts_11` IS NULL";
     }
+    #echo $presidente."<br>";
+    #echo $votou."<br>";
+    #echo $query."<br>";
     $result = mysqli_query($con, $query);
-    ?>
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
     <head>
@@ -27,8 +32,9 @@
 
         <script>
             function carregar(){
-                alert('Obrigado pela partddddicipação!');
-                javascript:window.location='http://localhost/virtualdemocracia_app';
+                alert('Obrigado pela participação!');
+                //javascript:window.location='http://localhost/virtualdemocracia_app';
+                javascript:window.location='http://192.168.88.202/virtualdemocracia_app';
             }
         </script>
     </head>

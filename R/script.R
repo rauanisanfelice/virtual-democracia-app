@@ -10,6 +10,8 @@ ksvm_cod <- function(){
   #install.packages('RMySQL') # CONECTAR AO PHP MYSQL
   #require(RMySQL)
   library(RMySQL)
+  #install.packages("stringr")
+  library(stringr)
   
   # CRIA CONEXAO AO BANCO
   con <- dbConnect(RMySQL::MySQL(), host = "localhost",dbname="virtual_democracia",user = "root", password = "")
@@ -17,13 +19,16 @@ ksvm_cod <- function(){
   
   #encode (todos os atributos categóricos)
   base$id <- NULL
-  base$qts_02 <- NULL
-  base$qts_03 <- NULL
-  base$qts_05 <- NULL
+  #base$qts_02 <- NULL
+  #base$qts_03 <- NULL
+  #base$qts_05 <- NULL
   
   base_processed = base
   base_processed$qts_01 = factor(base_processed$qts_01, levels = c(1,2,3,4))
+  #base_processed$qts_02 = factor(base_processed$qts_02, levels = c(1,2,3,4,5))
+  #base_processed$qts_03 = factor(base_processed$qts_03, levels = c(0,1,2,3,4))
   base_processed$qts_04 = factor(base_processed$qts_04, levels = c(0,1,2,3,4,5,6,7))
+  #base_processed$qts_05 = factor(base_processed$qts_05, levels = c(0,1,2, 3))
   base_processed$qts_06 = factor(base_processed$qts_06, levels = c(1,2,3,4,5,6))
   base_processed$qts_07 = factor(base_processed$qts_07, levels = c(1,2,3))
   base_processed$qts_08 = factor(base_processed$qts_08, levels = c(1,2,3,4))
@@ -55,7 +60,16 @@ ksvm_cod <- function(){
   # PREVE O MELHOR CANDIDATO
   prev_ksvm_result <- predict(classif_ksvm, newdata = base_processed_com[-11])
   
-  retorno <- list("acuracia" = acuracia_cm, "presidente" = prev_ksvm_result)
+  # TRATA O RETORNO DO PRESIDENTE
+  pres <- paste('000',prev_ksvm_result, sep = "")
+  tam <- str_length(pres)
+  if (tam == 5){
+    pres <- substr(pres, 4, 6)
+  } else {
+    pres <- substr(pres, 3, 4)
+  }
+  
+  retorno <- list("acuracia" = acuracia_cm, "presidente" = pres)
   return (retorno)
   
   ##########################################################################################
