@@ -64,8 +64,8 @@
         exec('C:\Windows\System32\cmd.exe /c C:\Users\Rauan\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
         //echo '<pre>', join("\r\n", $output), "</pre>\r\n";
 
-        #$content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
-        $content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
+        $content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
+        #$content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
         
         $acuraciaPos = strpos($content, 'Accuracy');
         $presidentePos = strpos($content, '$presidente');
@@ -101,7 +101,7 @@
             <div class="card-body">
                 <h5 class="card-title">'.$presidentes[$presidente]['nome'].'</h5>
                 <p class="card-text">Seus ideais batem com o(a) candidato(a) '.$presidentes[$presidente]['nome'].'.</p>
-                <p class="card-text font-weight-bold" id="percentual">'.$acuracia.'% de compatibilidade</p>
+                <p class="card-text font-weight-bold" id="percentual">'.$acuracia.'% de acurácia.</p>
             </div>
         </div>'
 
