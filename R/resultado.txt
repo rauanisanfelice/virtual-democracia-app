@@ -1,7 +1,7 @@
 $acuracia
 Accuracy 
-   68.97 
+   65.62 
 
 $presidente
-[1] "03"
+[1] "06"
 

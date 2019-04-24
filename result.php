@@ -61,11 +61,12 @@
         $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, null)";
         mysqli_query($con, $query);
 
+        exec('C:\Windows\System32\cmd.exe /c C:\Users\rishida\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
         exec('C:\Windows\System32\cmd.exe /c C:\Users\Rauan\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
         //echo '<pre>', join("\r\n", $output), "</pre>\r\n";
 
-        #$content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
-        $content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
+        $content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
+        #$content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
         
         $acuraciaPos = strpos($content, 'Accuracy');
         $presidentePos = strpos($content, '$presidente');
