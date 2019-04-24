@@ -8,7 +8,7 @@
     $votou = $_GET['v'];
     if($votou == 's'){
         $presidente = $_GET['p'];
-        if ($presidente == '') {$presidente = $_POST['p'];}
+        //if ($presidente == '') {$presidente = $_POST['p'];}
         $query = "UPDATE `questionario` SET `qts_11` = $presidente where `qts_11` IS NULL";
     }
     else {
@@ -33,8 +33,8 @@
         <script>
             function carregar(){
                 alert('Obrigado pela participação!');
-                javascript:window.location='http://localhost/virtualdemocracia_app';
-                //javascript:window.location='http://192.168.88.202/virtualdemocracia_app';
+                //javascript:window.location='http://localhost/virtualdemocracia_app';
+                javascript:window.location='http://192.168.88.202/virtualdemocracia_app';
             }
         </script>
     </head>

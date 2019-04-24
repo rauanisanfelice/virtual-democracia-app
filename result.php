@@ -64,8 +64,8 @@
         exec('C:\Windows\System32\cmd.exe /c C:\Users\Rauan\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
         //echo '<pre>', join("\r\n", $output), "</pre>\r\n";
 
-        $content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
-        #$content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
+        #$content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
+        $content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
         
         $acuraciaPos = strpos($content, 'Accuracy');
         $presidentePos = strpos($content, '$presidente');
@@ -101,7 +101,7 @@
             <div class="card-body">
                 <h5 class="card-title">'.$presidentes[$presidente]['nome'].'</h5>
                 <p class="card-text">Seus ideais batem com o(a) candidato(a) '.$presidentes[$presidente]['nome'].'.</p>
-                <p class="card-text font-weight-bold" id="percentual">'.$acuracia.'% de acurácia.</p>
+                <p class="card-text font-weight-bold" id="percentual">'.$acuracia.'% de compatibilidade</p>
             </div>
         </div>'
 
@@ -121,7 +121,8 @@
 
                 <!-- FORMULARIO style="display:none;"-->
                 <div id="form_pres" style="display: none;" class="col-sm-12 col-md card border border-secondary">
-                    <form action="teste-final.php?v=s" method="post" class="">
+                    <form action="teste-final.php" method="get" class="">
+                        <input type="hidden" name="v" value="s"/>
                         <h5 style="margin-top: 10px;"> Em qual canditado você votou ?</h5>
                         <div class="custom-control custom-radio" style="margin-top: 5px;">
                             <input type="radio" id="q1" name="p" class="form-check-input" value="1" checked>
