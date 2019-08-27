@@ -25,9 +25,9 @@ Table:      questionario
 3. Executar o arquivo a baixo para inclusão da base.
 > INSERT_BANCO.sql
 
-4. Alterar "<caminho>" pelo caminho que se encontra sua pasta:
-> exec('C:\Windows\System32\cmd.exe /c <caminho>\rauan\virtualdemocracia_app\R\exec_r.bat', $output);  
-> exec('C:\Windows\System32\cmd.exe /c <caminho>\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
+4. Alterar "caminho" pelo caminho que se encontra sua pasta:
+> exec('C:\Windows\System32\cmd.exe /c **"caminho"**\rauan\virtualdemocracia_app\R\exec_r.bat', $output);  
+> exec('C:\Windows\System32\cmd.exe /c **"caminho"**\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
 
 
 ## Links;

@@ -56,8 +56,8 @@
         $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, null)";
         mysqli_query($con, $query);
 
-        exec('C:\Windows\System32\cmd.exe /c <caminho>\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
-        exec('C:\Windows\System32\cmd.exe /c <caminho>\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
+        exec('C:\Windows\System32\cmd.exe /c "caminho"\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
+        exec('C:\Windows\System32\cmd.exe /c "caminho"\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
 
         $content = file_get_contents('http://localhost/rauan/virtualdemocracia_app/R/resultado.txt');
         
