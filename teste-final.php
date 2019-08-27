@@ -33,8 +33,7 @@
         <script>
             function carregar(){
                 alert('Obrigado pela participação!');
-                javascript:window.location='http://localhost/virtualdemocracia_app';
-                //javascript:window.location='http://192.168.88.202/virtualdemocracia_app';
+                javascript:window.location='http://localhost/rauan/virtualdemocracia_app';
             }
         </script>
     </head>

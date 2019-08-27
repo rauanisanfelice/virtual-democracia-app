@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt">
-
     <script>
-        // When the user scrolls down 20px from the top of the document, show the button
         window.onscroll = function() {scrollFunction()};
-
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 document.getElementById("myBtn").style.display = "block";
@@ -12,11 +9,10 @@
                 document.getElementById("myBtn").style.display = "none";
             }
         }
-
-        // When the user clicks on the button, scroll to the top of the document
+        
         function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         }
 
         function mudaestado(el)
@@ -28,7 +24,6 @@
                 document.getElementById(el).style.display = 'none';
             }
         }
-
     </script>
 
     <head>
@@ -61,21 +56,16 @@
         $query = "insert into questionario values(null, $q1, $q2, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10, null)";
         mysqli_query($con, $query);
 
-        exec('C:\Windows\System32\cmd.exe /c C:\Users\rishida\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
-        exec('C:\Windows\System32\cmd.exe /c C:\Users\Rauan\Documents\Github_Rauan\virtualdemocracia_app\R\exec_r.bat', $output);
-        //echo '<pre>', join("\r\n", $output), "</pre>\r\n";
+        exec('C:\Windows\System32\cmd.exe /c <caminho>\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
+        exec('C:\Windows\System32\cmd.exe /c <caminho>\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
 
-        $content = file_get_contents('http://localhost/virtualdemocracia_app/R/resultado.txt');
-        #$content = file_get_contents('http://192.168.88.202/virtualdemocracia_app/R/resultado.txt');
+        $content = file_get_contents('http://localhost/rauan/virtualdemocracia_app/R/resultado.txt');
         
         $acuraciaPos = strpos($content, 'Accuracy');
         $presidentePos = strpos($content, '$presidente');
 
         $acuracia = substr($content, $acuraciaPos + 8, 11);
         $presidente = substr($content, $presidentePos + 18, 2);
-
-        #echo 'acuracia = ' . $acuracia;
-        #echo '<br/>presidente = ' . $presidente;
 
         $presidentes = array(
             '01' => array('img' => 'imgs/', 'nome' => 'Brancos / Nulos / Não votou'),
