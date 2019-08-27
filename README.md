@@ -5,9 +5,9 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/rauanisanfelice/virtualdemocracia_app.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/rauanisanfelice/virtualdemocracia_app.svg)
 
-![GitHub stars](https://img.shields.io/github/stars/rauanisanfelice/Python_Treino.svg?style=social)
+![GitHub stars](https://img.shields.io/github/stars/rauanisanfelice/virtualdemocracia_app.svg?style=social)
 ![GitHub followers](https://img.shields.io/github/followers/rauanisanfelice.svg?style=social)
-![GitHub forks](https://img.shields.io/github/forks/rauanisanfelice/Python_Treino.svg?style=social)
+![GitHub forks](https://img.shields.io/github/forks/rauanisanfelice/virtualdemocracia_app.svg?style=social)
 
 
 # Virtual Democracia App
