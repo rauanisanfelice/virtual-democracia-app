@@ -26,15 +26,15 @@ Table:      questionario
 > INSERT_BANCO.sql
 
 4. Alterar "caminho" pelo caminho que se encontra sua pasta:
-> exec('C:\Windows\System32\cmd.exe /c **"caminho"**\rauan\virtualdemocracia_app\R\exec_r.bat', $output);  
-> exec('C:\Windows\System32\cmd.exe /c **"caminho"**\rauan\virtualdemocracia_app\R\exec_r.bat', $output);
+> exec('C:\Windows\System32\cmd.exe /c **"caminho"**\virtualdemocracia_app\R\exec_r.bat', $output);  
+> exec('C:\Windows\System32\cmd.exe /c **"caminho"**\virtualdemocracia_app\R\exec_r.bat', $output);
 
 
 ## Links;
 
 App
 ```
-http://localhost/rauan/virtualdemocracia_app/
+http://localhost/virtualdemocracia_app/
 ```
 
 Banco
