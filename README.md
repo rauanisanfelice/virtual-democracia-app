@@ -14,7 +14,7 @@
 
 Virtual Democracia App é um projeto de TCC, com objetivo de coletar respostas de várias pessoas sobre política, para que ser analisado seu perfil. Foram coletadas 320 respostas, através destas respostas novos usuários que responderem o questionário nosso site irá indicar um candidato compatível.
 
-## Instruções;
+## Instruções; 
 
 1. Instalar XAMPP ou WAMP;
 
